@@ -8,59 +8,105 @@
 
 
 def init(max_readings):
-    """
-    Crea y retorna un diccionario para almacenar hasta max_readings lecturas.
-    """
+    
+    return {"max": max_readings, "readings": [], "total": 0.0}
+
+    
     # TODO: Implementar
     pass
 
 
 def add_reading(monitor, temp):
-    """
-    Agrega una nueva lectura con la temperatura especificada.
-    Retorna el diccionario modificado.
-    """
+
+    monitor["readings"].append(values) 
+    monitor["total"] = monitor["total"] + values 
+    return monitor
+
     # TODO: Implementar
     pass
 
 
 def count(monitor):
-    """
-    Retorna el numero de lecturas agregadas.
-    """
+    return len(monitor("readings"))
+
     # TODO: Implementar
     pass
 
 
 def average_temp(monitor):
-    """
-    Retorna la temperatura promedio de todas las lecturas.
-    """
+   if count(monitor) == 0:
+        return 0.0
+   return monitor["total"] / count(monitor)
+
+
     # TODO: Implementar
-    pass
+   pass
 
 
 def format_readings(monitor):
-    """
-    Retorna una representacion en cadena de las temperaturas.
-    Formato: [t1, t2, t3, ..., tn]
-    """
+
+    lista = monitor["readings"]
+    texto = "["
+
+    i = 0
+    while i < len(lista):
+        texto = texto + str(lista[i])
+        if i < len(lista) - 1:
+            texto = texto + ", "
+        i = i + 1
+    texto = texto + "]"
+
+    return texto 
+
+    
+
+    
+
+
     # TODO: Implementar
     pass
 
 
 def highest_temp(monitor):
-    """
-    Retorna la temperatura mas alta de cualquier lectura.
-    """
+   lista = monitor["readings"]
+   maximo = lista[0]
+
+   for valor in lista:
+        if valor > maximo:
+            maximo = valor
+
+   return maximo
+
     # TODO: Implementar
-    pass
+   pass
 
 
 def coldest_window(monitor, k):
-    """
-    Retorna el promedio mas bajo de cualquier k lecturas consecutivas.
-    """
+     lista = monitor["readings"]
+    n = len(lista)
+
+    # suma inicial
+    suma = 0
+    i = 0
+    while i < k:
+        suma = suma + lista[i]
+        i = i + 1
+
+    min_promedio = suma / k
+
+    i = k
+    while i < n:
+        suma = suma - lista[i - k]
+        suma = suma + lista[i]
+
+        promedio = suma / k
+        if promedio < min_promedio:
+            min_promedio = promedio
+
+        i = i + 1
+  
+ return min_promedio
+
     # TODO: Implementar
     pass
 
