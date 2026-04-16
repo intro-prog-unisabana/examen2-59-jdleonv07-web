@@ -105,7 +105,7 @@ def coldest_window(monitor, k):
 
         i = i + 1
   
- return min_promedio
+    return min_promedio
 
     # TODO: Implementar
     pass
