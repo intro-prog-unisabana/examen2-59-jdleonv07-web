@@ -82,7 +82,7 @@ def highest_temp(monitor):
 
 
 def coldest_window(monitor, k):
-     lista = monitor["readings"]
+    lista = monitor["readings"]
     n = len(lista)
 
     # suma inicial
